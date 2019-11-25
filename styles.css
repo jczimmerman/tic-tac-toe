@@ -1,0 +1,15 @@
+body section {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+body section div {
+  width: 150px;
+  height: 150px;
+  border: black;
+  background-color: red;
+  font-size: 140px;
+  text-align: center;
+}
