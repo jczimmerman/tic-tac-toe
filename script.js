@@ -1,7 +1,8 @@
-let grid = [
-"", "", "",
-"", "", "",
-"", "", ""];
+let grid = [];
+for (i = 1; i < 10; i++) {
+  grid.push( document.getElementById(`${i}`));
+  console.log(grid);
+}
 
 const players = ['X', 'O'];
 
@@ -34,3 +35,4 @@ for (let element of allDivs){
 //These will be in start/restart function
 randomStart();
 updateTurn();
+
