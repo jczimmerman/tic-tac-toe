@@ -7,7 +7,7 @@ let grid = [
 const players = ['X', 'O'];
 
 let turn;
-
+let counter = 1;
 //Function to choose who starts randomly
 let randomStart = () =>{
   let randy = Math.random() * 100;
@@ -69,7 +69,7 @@ let checkWin = () =>{
     console.log('check', '2');
     if((grid[4] == grid[3] && grid[4] == grid[5]) || (grid[4] == grid[7] && grid[4] == grid[1])
     || (grid[4] == grid[6] && grid[4] == grid[2])){
-
+      return;
 
 
       turn == 0 ? turn = 1 : turn = 0;
