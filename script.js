@@ -1,7 +1,8 @@
-let grid = [
-1, 2, 3,
-4, 5, 6,
-7, 8, 9];
+let grid = [];
+for (i = 1; i < 10; i++) {
+  grid.push( document.getElementById(`${i}`));
+  console.log(grid);
+}
 
 const players = ['X', 'O'];
 let turn;
@@ -32,3 +33,4 @@ for (let element of allDivs){
     turn == 0 ? turn = 1 : turn = 0;
   });
 }
+
