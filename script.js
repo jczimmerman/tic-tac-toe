@@ -18,22 +18,17 @@ let randomStart = () =>{
   }
 }
 
-
 randomStart();
-//using the function to display whos turn it is
+//Display whose turn it is
 let  text = document.getElementById("text");
 text.textContent = "It's " + players[turn] + "'s turn";
 
 //Loops through all divs, gives them an event
 let allDivs = document.querySelectorAll("div");
-for (let element of Array.from(allDivs)){
+for (let element of allDivs){
+  
   element.addEventListener("click", event =>{
     element.textContent = players[turn];
-    if (turn = 0) {
-      turn = 1;
-    }
-    else{
-      turn = 0;
-    };
-  })
+    turn == 0 ? turn = 1 : turn = 0;
+  });
 }
