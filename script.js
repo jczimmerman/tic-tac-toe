@@ -23,13 +23,17 @@ let updateTurn = () =>{
 //Loops through all divs, gives them an event
 let allDivs = document.querySelectorAll("div");
 
+
 for (let element of allDivs){
-  element.addEventListener("click", event =>{
+  let eventUpdate = () => {
     element.textContent = players[turn];
     grid[element.id] = players[turn];
     turn == 0 ? turn = 1 : turn = 0;
     updateTurn();
-  });
+    element.removeEventListener("click", eventUpdate);
+  }
+
+  element.addEventListener("click", eventUpdate);
 }
 
 //These will be in start/restart function
