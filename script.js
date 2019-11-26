@@ -36,4 +36,6 @@ for (let element of allDivs){
 randomStart();
 updateTurn();
 
-//if (grid["X"] || grid["O"] === grid[0] && grid[4] && grid[8])
+if (grid[0] == "X") {
+
+}
