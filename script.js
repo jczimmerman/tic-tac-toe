@@ -33,8 +33,8 @@ for (let element of allDivs){
     turn == 0 ? turn = 1 : turn = 0;
     element.removeEventListener("click", eventUpdate);
 
-    checkWin();
     updateTurn();
+    checkWin();
   }
 
   element.addEventListener("click", eventUpdate);
@@ -44,24 +44,28 @@ for (let element of allDivs){
 randomStart();
 updateTurn();
 
+//Checking win conditions/tie conditions
 let checkWin = () =>{
   if (grid[0] != "") {
     if ((grid[0] == grid[1] && (grid[0] == grid[2]) || grid[0] == grid[3] && grid[0] == grid[6])
     || grid[0] == grid[4] && grid[0] == grid[8]){
-      console.log("winner!");
+      turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('whoWon').textContent = players[turn] + " wins!";
       return;
     }
   }
   if (grid[4] != ""){
     if((grid[4] == grid[3] && grid[4] == grid[5]) || (grid[4] == grid[7] && grid[4] == grid[1])
     || (grid[4] == grid[6] && grid[4] == grid[2])){
-      console.log("winner!")
+      turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('whoWon').textContent = players[turn] + " wins!";
       return;
     }
   }
   if (grid[8] != ""){
     if((grid[8] == grid[7] && grid[8] == grid[6]) || (grid[8] == grid[5] && grid[8] == grid[2])){
-      console.log("winner!")
+      turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('whoWon').textContent = players[turn] + " wins!";
       return;
     }
   }
