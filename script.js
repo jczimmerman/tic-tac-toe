@@ -1,8 +1,8 @@
-let grid = [];
-for (i = 1; i < 10; i++) {
-  grid.push( document.getElementById(`${i}`));
-  console.log(grid);
-}
+let grid = [
+  "", "", "",
+  "", "", "",
+  "", "", ""];
+
 
 const players = ['X', 'O'];
 
@@ -11,7 +11,6 @@ let turn;
 //Function to choose who starts randomly
 let randomStart = () =>{
   let randy = Math.random() * 100;
-
   randy < 50 ? turn = 0 : turn = 1;
 }
 
@@ -27,6 +26,7 @@ let allDivs = document.querySelectorAll("div");
 for (let element of allDivs){
   element.addEventListener("click", event =>{
     element.textContent = players[turn];
+    grid[element.id] = players[turn];
     turn == 0 ? turn = 1 : turn = 0;
     updateTurn();
   });
