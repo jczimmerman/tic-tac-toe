@@ -70,5 +70,6 @@ let checkWin = () =>{
     }
   }
   if (counter == 9) console.log("tie!");
+  
 }
 
