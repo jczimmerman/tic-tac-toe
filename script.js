@@ -29,8 +29,10 @@ for (let element of allDivs){
     element.textContent = players[turn];
     grid[element.id] = players[turn];
     turn == 0 ? turn = 1 : turn = 0;
-    updateTurn();
     element.removeEventListener("click", eventUpdate);
+
+    checkWin();
+    updateTurn();
   }
 
   element.addEventListener("click", eventUpdate);
@@ -40,6 +42,23 @@ for (let element of allDivs){
 randomStart();
 updateTurn();
 
-if (grid[0] == "X") {
-
+let checkWin = () =>{
+  if (grid[0] != "") {
+    if ((grid[0] == grid[1] && (grid[0] == grid[2]) || grid[0] == grid[3] && grid[0] == grid[6])
+    || grid[0] == grid[4] && grid[0] == grid[8]){
+      console.log("winner!");
+    }
+  }
+  if (grid[4] != ""){
+    if((grid[4] == grid[3] && grid[4] == grid[5]) || (grid[4] == grid[7] && grid[4] == grid[1])
+    || (grid[4] == grid[6] && grid[4] == grid[2])){
+      console.log("winner!")
+    }
+  }
+  if (grid[8] != ""){
+    if((grid[8] == grid[7] && grid[8] == grid[6]) || (grid[8] == grid[5] && grid[8] == grid[2])){
+      console.log("winner!")
+    }
+  }
 }
+
