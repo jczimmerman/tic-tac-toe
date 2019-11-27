@@ -31,10 +31,11 @@ for (let element of allDivs){
     grid[element.id] = players[turn];
     counter++;
     turn == 0 ? turn = 1 : turn = 0;
+    
     element.removeEventListener("click", eventUpdate);
-
-    updateTurn();
     checkWin();
+    updateTurn();
+    
   }
 
   element.addEventListener("click", eventUpdate);
@@ -70,6 +71,8 @@ let checkWin = () =>{
     }
   }
   if (counter == 9) console.log("tie!");
+  
+
   
 }
 
