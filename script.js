@@ -16,7 +16,7 @@ let play = () => {
     "", "", ""];
   counter = 0;
   document.getElementById('text').style.display = "block";
-
+  document.getElementById('whoWon').textContent = "";
   randomStart();
   updateTurn();
   createEvent();
@@ -60,8 +60,8 @@ let createEvent = () =>{
       grid[element.id] = players[turn];
       counter++;
       turn == 0 ? turn = 1 : turn = 0;
-      //element.removeEventListener("click", eventUpdate);
-      removeEvent(element, eventUpdate);
+      element.removeEventListener("click", eventUpdate);
+      //removeEvent(element, eventUpdate);
       updateTurn();
       checkWin();
     }
@@ -70,9 +70,9 @@ let createEvent = () =>{
     
 }
 
-let removeEvent = (element, eventUpdate) => {
+/*let removeEvent = (element, eventUpdate) => {
   element.removeEventListener("click", eventUpdate);
-}
+}*/
 
 //Checking win conditions/tie conditions
 let checkWin = () =>{
