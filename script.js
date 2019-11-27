@@ -17,6 +17,8 @@ let play = () => {
   counter = 0;
   randomStart();
   updateTurn();
+  document.getElementById('whoWon').textContent = "Who's it gonna be";
+
 
   for (let element of allDivs){
     element.textContent = "";
@@ -56,7 +58,6 @@ let allDivs = document.querySelectorAll("div");
       counter++;
       turn == 0 ? turn = 1 : turn = 0;
       element.removeEventListener("click", eventUpdate);
-
       updateTurn();
       checkWin();
     }
