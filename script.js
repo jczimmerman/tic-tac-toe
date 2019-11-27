@@ -7,7 +7,32 @@ let grid = [
 const players = ['X', 'O'];
 
 let turn;
-let counter = 0;
+let counter;
+//This function starts/resets the game
+let play = () => {
+  grid = [
+    "", "", "",
+    "", "", "",
+    "", "", ""];
+  counter = 0;
+  randomStart();
+  updateTurn();
+
+  for (let element of allDivs){
+    element.textContent = "";
+  }
+}
+
+//Loads game up when the page first loads
+window.addEventListener("load", event =>{
+  play();
+});
+
+//Restarts game from button
+let button = document.querySelector('button');
+button.addEventListener("click", event =>{
+  play();
+})
 
 //Function to choose who starts randomly
 let randomStart = () =>{
@@ -39,10 +64,6 @@ let allDivs = document.querySelectorAll("div");
     element.addEventListener("click", eventUpdate);
   }
 
-//These will be in start/restart function
-randomStart();
-updateTurn();
-
 //Checking win conditions/tie conditions
 let checkWin = () =>{
   if (grid[0] != "") {
@@ -51,7 +72,6 @@ let checkWin = () =>{
       turn == 0 ? turn = 1 : turn = 0;
       document.getElementById('text').style.display = "none";
       document.getElementById('whoWon').textContent = players[turn] + " wins!";
-      //document.getElementsByClassName('div').removeEventListener("click", eventUpdate);
       return;
     }
   }
