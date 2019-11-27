@@ -60,13 +60,18 @@ let createEvent = () =>{
       grid[element.id] = players[turn];
       counter++;
       turn == 0 ? turn = 1 : turn = 0;
-      element.removeEventListener("click", eventUpdate);
+      //element.removeEventListener("click", eventUpdate);
+      removeEvent(element, eventUpdate);
       updateTurn();
       checkWin();
     }
     element.addEventListener("click", eventUpdate);
   }
     
+}
+
+let removeEvent = (element, eventUpdate) => {
+  element.removeEventListener("click", eventUpdate);
 }
 
 //Checking win conditions/tie conditions
