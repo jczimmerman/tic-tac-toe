@@ -24,21 +24,20 @@ let updateTurn = () =>{
 //Loops through all divs, gives them an event
 let allDivs = document.querySelectorAll("div");
 
+  for (let element of allDivs){
+    let eventUpdate = () => {
+      element.textContent = players[turn];
+      grid[element.id] = players[turn];
+      counter++;
+      turn == 0 ? turn = 1 : turn = 0;
+      element.removeEventListener("click", eventUpdate);
 
-for (let element of allDivs){
-  let eventUpdate = () => {
-    element.textContent = players[turn];
-    grid[element.id] = players[turn];
-    counter++;
-    turn == 0 ? turn = 1 : turn = 0;
-    element.removeEventListener("click", eventUpdate);
+      updateTurn();
+      checkWin();
+    }
 
-    updateTurn();
-    checkWin();
+    element.addEventListener("click", eventUpdate);
   }
-
-  element.addEventListener("click", eventUpdate);
-}
 
 //These will be in start/restart function
 randomStart();
@@ -50,7 +49,9 @@ let checkWin = () =>{
     if ((grid[0] == grid[1] && (grid[0] == grid[2]) || grid[0] == grid[3] && grid[0] == grid[6])
     || grid[0] == grid[4] && grid[0] == grid[8]){
       turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('text').style.display = "none";
       document.getElementById('whoWon').textContent = players[turn] + " wins!";
+      //document.getElementsByClassName('div').removeEventListener("click", eventUpdate);
       return;
     }
   }
@@ -58,6 +59,7 @@ let checkWin = () =>{
     if((grid[4] == grid[3] && grid[4] == grid[5]) || (grid[4] == grid[7] && grid[4] == grid[1])
     || (grid[4] == grid[6] && grid[4] == grid[2])){
       turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('text').style.display = "none";
       document.getElementById('whoWon').textContent = players[turn] + " wins!";
       return;
     }
@@ -65,11 +67,15 @@ let checkWin = () =>{
   if (grid[8] != ""){
     if((grid[8] == grid[7] && grid[8] == grid[6]) || (grid[8] == grid[5] && grid[8] == grid[2])){
       turn == 0 ? turn = 1 : turn = 0;
+      document.getElementById('text').style.display = "none";
       document.getElementById('whoWon').textContent = players[turn] + " wins!";
       return;
     }
   }
-  if (counter == 9) console.log("tie!");
+  if (counter == 9) {
+    turn == 0 ? turn = 1 : turn = 0;
+    document.getElementsById('whoWon').textContent = players[turn] + " wins!";
+  }
   
 }
 
