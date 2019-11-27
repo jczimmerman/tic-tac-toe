@@ -15,11 +15,13 @@ let play = () => {
     "", "", "",
     "", "", ""];
   counter = 0;
+  document.getElementById('text').style.display = "block";
+
   randomStart();
   updateTurn();
-  document.getElementById('whoWon').textContent = "Who's it gonna be";
-
-
+  createEvent();
+  
+  
   for (let element of allDivs){
     element.textContent = "";
   }
@@ -51,6 +53,7 @@ let updateTurn = () =>{
 //Loops through all divs, gives them an event
 let allDivs = document.querySelectorAll("div");
 
+let createEvent = () =>{
   for (let element of allDivs){
     let eventUpdate = () => {
       element.textContent = players[turn];
@@ -61,9 +64,10 @@ let allDivs = document.querySelectorAll("div");
       updateTurn();
       checkWin();
     }
-
     element.addEventListener("click", eventUpdate);
   }
+    
+}
 
 //Checking win conditions/tie conditions
 let checkWin = () =>{
